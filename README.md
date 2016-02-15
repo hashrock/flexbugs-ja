@@ -25,9 +25,9 @@ As the spec continues to evolve and vendors nail down their implementations, thi
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
-    <th align="left">Tracking bugs</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
+    <th align="left">バグトラッカ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -62,8 +62,8 @@ The flexbox spec defines an initial `flex-shrink` value of `1` but says items sh
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -86,9 +86,9 @@ Most of the time, this can be fixed by simply setting `max-width:100%` on the fl
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
-    <th align="left">Tracking bugs</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
+    <th align="left">バグトラッカ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -116,8 +116,8 @@ For cases where `min-height` is required, the workaround is to add a wrapper ele
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -144,8 +144,8 @@ When using the `flex` shorthand, always include a unit in the `flex-basis` porti
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -172,8 +172,8 @@ You can avoid this problem by adding a container element to house the element wi
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -226,8 +226,8 @@ If you have to support IE 10, the best solution is to *always* set an explicit `
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -254,8 +254,8 @@ There are two ways to work around this bug. The first requires no additional mar
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -287,9 +287,9 @@ If you need to support IE 10 as well, then you'll need to fall back to setting `
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
-    <th align="left">Tracking bugs</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
+    <th align="left">バグトラッカ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -320,15 +320,15 @@ Demo [9.1.a](http://codepen.io/philipwalton/pen/ByZgpW) shows how `<button>` ele
 
 #### Workaround
 
-The simple solution to this problem is to use a wrapper element that can be a flex container (like a `<div>`) directly inside of the element that can't. Demos [9.1.b](http://codepen.io/philipwalton/pen/mywZpr) and [9.2.b](http://codepen.io/philipwalton/pen/EVaRaX) show workaround for the `<button>` and `<fieldset>` elements, respectively.
+The simple solution to this problem is to use a wrapper element that can be a flex container (like a `<div>`) directly inside of the element that can't. DEMO [9.1.b](http://codepen.io/philipwalton/pen/mywZpr) and [9.2.b](http://codepen.io/philipwalton/pen/EVaRaX) show workaround for the `<button>` and `<fieldset>` elements, respectively.
 
 ### 10. `align-items: baseline` doesn't work with nested flex containers
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
-    <th align="left">Tracking bugs</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
+    <th align="left">バグトラッカ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -355,9 +355,9 @@ This bug only affects nested containers set to `display: flex`. If you set the n
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
-    <th align="left">Tracking bugs</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
+    <th align="left">バグトラッカ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -385,8 +385,8 @@ The only way to avoid this issue is to make sure to set the flex basis to a valu
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
   </tr>
   <tr valign="top">
     <td>
@@ -407,8 +407,8 @@ This issue can be avoided by adding a non-inline display value to the items, e.g
 
 <table>
   <tr>
-    <th align="left">Demos</th>
-    <th align="left">Browsers affected</th>
+    <th align="left">デモ</th>
+    <th align="left">影響を受けるブラウザ</th>
   </tr>
   <tr valign="top">
     <td>
