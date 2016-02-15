@@ -7,19 +7,19 @@ As the spec continues to evolve and vendors nail down their implementations, thi
 
 ## The bugs and their workarounds
 
-1. [Minimum content sizing of flex items not honored](#1-minimum-content-sizing-of-flex-items-not-honored)
-2. [Column flex items set to `align-items:center` overflow their container](#2-column-flex-items-set-to-align-itemscenter-overflow-their-container)
-3. [`min-height` on a flex container won't apply to its flex items](#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items)
-4. [`flex` shorthand declarations with unitless `flex-basis` values are ignored](#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored)
-5. [Column flex items don't always preserve intrinsic aspect ratios](#5-column-flex-items-dont-always-preserve-intrinsic-aspect-ratios)
-6. [The default `flex` value has changed](#6-the-default-flex-value-has-changed)
-7. [`flex-basis` doesn't account for `box-sizing:border-box`](#7-flex-basis-doesnt-account-for-box-sizingborder-box)
-8. [`flex-basis` doesn't support `calc()`](#8-flex-basis-doesnt-support-calc)
-9. [Some HTML elements can't be flex containers](#9-some-html-elements-cant-be-flex-containers)
-10. [`align-items: baseline` doesn't work with nested flex containers](#10-align-items-baseline-doesnt-work-with-nested-flex-containers)
-11. [Min and max size declarations are ignored when wrapping flex items](#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items)
-12. [Inline elements are not treated as flex-items](#12-inline-elements-are-not-treated-as-flex-items)
-13. [Importance is ignored on flex-basis when using flex shorthand](#13-importance-is-ignored-on-flex-basis-when-using-flex-shorthand)
+1. [flexアイテムの最小コンテンツサイズが順守されない](#1-minimum-content-sizing-of-flex-items-not-honored)
+2. [ `align-items:center` に設定された縦並びのflexアイテムが、親コンテナからはみ出してしまう ](#2-column-flex-items-set-to-align-itemscenter-overflow-their-container)
+3. [flexコンテナの `min-height` が内包するflexアイテムに適用されない](#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items)
+4. [省略記法の`flex` 定義で、`flex-basis` に単位のない値を指定すると無視される](#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored)
+5. [縦並びのflexアイテムが、本来のアスペクト比を保持してくれない](#5-column-flex-items-dont-always-preserve-intrinsic-aspect-ratios)
+6. [`flex` のデフォルト値が仕様と違う](#6-the-default-flex-value-has-changed)
+7. [`flex-basis` の計算が `box-sizing:border-box` を考慮していない](#7-flex-basis-doesnt-account-for-box-sizingborder-box)
+8. [`flex-basis` が `calc()` をサポートしていない](#8-flex-basis-doesnt-support-calc)
+9. [幾つかの HTML 要素は flex コンテナになれない](#9-some-html-elements-cant-be-flex-containers)
+10. [ネストされたflexコンテナで `align-items: baseline` が効かない](#10-align-items-baseline-doesnt-work-with-nested-flex-containers)
+11. [flexアイテムを折り返す場合に、最小・最大サイズの定義が無視される](#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items)
+12. [インライン要素がflexアイテムとして扱われない](#12-inline-elements-are-not-treated-as-flex-items)
+13. [省略記法のflexを使った時、flex-basisでimportant指定が無視される](#13-importance-is-ignored-on-flex-basis-when-using-flex-shorthand)
 
 ### 1. Minimum content sizing of flex items not honored
 
