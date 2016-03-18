@@ -108,7 +108,7 @@ flexコンテナの `min-height` が内包するflexアイテムに適用され�
   </tr>
 </table>
 
-In order for flex items to size and position themselves, they need to know how big their containers are. For example, if a flex item is supposed to be vertically centered, it needs to know how tall its parent is. The same is true when flex items are told to grow to fill the remaining empty space.
+flexアイテムのサイズと位置を決定するためには、それらのコンテナの大きさを知っている必要があります。例えば、flexアイテムが縦中央に位置するとき、親の高さを知る必要があります。flexアイテムが残りの空間を埋めるようにgrowする場合にも同じことがいえます。
 
 In IE 10-11, `min-height` declarations on flex containers work to size the containers themselves, but their flex item children do not seem to know the size of their parents. They act as if no height has been set at all.
 
