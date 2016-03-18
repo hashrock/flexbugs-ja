@@ -23,6 +23,8 @@ As the spec continues to evolve and vendors nail down their implementations, thi
 
 ### 1. Minimum content sizing of flex items not honored
 
+flexアイテムの最小コンテンツサイズが順守されない
+
 <table>
   <tr>
     <th align="left">デモ</th>
@@ -48,17 +50,19 @@ As the spec continues to evolve and vendors nail down their implementations, thi
   </tr>
 </table>
 
-When flex items are too big to fit inside their container, those items are instructed (by the flex layout algorithm) to shrink, proportionally, according to their `flex-shrink` property. But contrary to what most browsers allow, they're *not* supposed to shrink indefinitely. They must always be at least as big as their minimum height or width properties declare, and if no minimum height or width properties are set, their minimum size should be the default minimum size of their content.
+Flexアイテムがコンテナ内に収まりきらない場合、それらのアイテムは`flex-shrink`プロパティに基づいてプロポーショナルに縮小されます。ほとんどのブラウザで許されているものとは逆に、未指定の際に縮小することにはなっていません。少なくとも指定されているminimum heightまたはwidthと同じ大きさであるべきですし、minimum height または widthプロパティが設定されていない場合でも、最小サイズはコンテンツのデフォルト最小サイズとなるべきです。
 
-According to the [current flexbox specification](http://www.w3.org/TR/css-flexbox/#flex-common):
+[現行のflexboxの仕様](http://www.w3.org/TR/css-flexbox/#flex-common)によると:
 
-> By default, flex items won’t shrink below their minimum content size (the length of the longest word or fixed-size element). To change this, set the min-width or min-height property.
+> デフォルトで、flexアイテムは最小コンテンツサイズ（最長の単語の長さまたは固定サイズ要素）に応じて縮小されません。これを変更するには、min-width または min-heightプロパティを設定して下さい。
 
 #### Workaround
 
-The flexbox spec defines an initial `flex-shrink` value of `1` but says items should not shrink below their default minimum content size. You can usually get this same behavior by setting a `flex-shrink` value of `0` (instead of the default `1`) and a `flex-basis` value of `auto`. That will cause the flex item to be at least as big as its width or height (if declared) or its default content size.
+仕様では、`flex-shrink` の初期値は `1` であると定めていますが、それはコンテンツのデフォルト最小サイズにしたがって縮小すべきではないとしています。代わりに`flex-shrink` を `0`に設定し、`flex-basis` を `auto`に設定することで、常に同じ振る舞いにすることができます。これにより、flexアイテムのサイズは、（指定されていれば）その高さと幅になるか、デフォルトコンテンツサイズと同等の大きさになります。
 
 ### 2. Column flex items set to `align-items:center` overflow their container
+
+`align-items:center` に設定された縦並びのflexアイテムが、親コンテナからはみ出してしまう
 
 <table>
   <tr>
@@ -76,13 +80,15 @@ The flexbox spec defines an initial `flex-shrink` value of `1` but says items sh
   </tr>
 </table>
 
-When using `align-items:center` on a flex container in the column direction, the contents of flex item, if too big, will overflow their container in IE 10-11.
+column directionのflexコンテナ上で `align-items:center` を使用し、flexアイテムのコンテンツが大きすぎる場合、IE10-11でコンテナをはみ出します。
 
 #### Workaround
 
-Most of the time, this can be fixed by simply setting `max-width:100%` on the flex item. If the flex item has a padding or border set, you'll also need to make sure to use `box-sizing:border-box` to account for that space. If the flex item has a margin, using `box-sizing` alone will not work, so you may need to use a container element with padding instead.
+ほとんどの場合、flexアイテムに`max-width:100%`を指定するだけで修正できます。flexアイテムにpaddingまたはborderが設定されている場合、 `box-sizing:border-box` を利用しているか確認する必要があります。flexアイテムにマージンがある場合、`box-sizing`だけでは効果がありません。代わりにコンテナ要素にpaddingを設定してもよいでしょう。
 
 ### 3. `min-height` on a flex container won't apply to its flex items
+
+flexコンテナの `min-height` が内包するflexアイテムに適用されない
 
 <table>
   <tr>
@@ -114,6 +120,8 @@ For cases where `min-height` is required, the workaround is to add a wrapper ele
 
 ### 4. `flex` shorthand declarations with unitless `flex-basis` values are ignored
 
+//優先
+
 <table>
   <tr>
     <th align="left">デモ</th>
@@ -142,6 +150,8 @@ When using the `flex` shorthand, always include a unit in the `flex-basis` porti
 
 ### 5. Column flex items don't always preserve intrinsic aspect ratios
 
+//優先
+
 <table>
   <tr>
     <th align="left">デモ</th>
@@ -169,6 +179,8 @@ The [most recent spec](http://dev.w3.org/csswg/css-flexbox/#min-size-auto) has r
 You can avoid this problem by adding a container element to house the element with the intrinsic aspect ratio. Since doing this causes the element with the intrinsic aspect ratio to no longer be a flex item, it will be sized normally.
 
 ### 6. The default `flex` value has changed
+
+//あとで（IE10のみ）
 
 <table>
   <tr>
@@ -224,6 +236,8 @@ If you have to support IE 10, the best solution is to *always* set an explicit `
 
 ### 7. `flex-basis` doesn't account for `box-sizing:border-box`
 
+//優先
+
 <table>
   <tr>
     <th align="left">デモ</th>
@@ -251,6 +265,8 @@ There are two ways to work around this bug. The first requires no additional mar
 2. Use a wrapper element that contains no border or padding so it works with the content box model. Demo [7.1.c](http://codepen.io/philipwalton/pen/ZYLdqb) show this.
 
 ### 8. `flex-basis` doesn't support `calc()`
+
+//優先
 
 <table>
   <tr>
@@ -284,6 +300,8 @@ Since this bug only affects the `flex` shorthand declaration in IE 11, an easy w
 If you need to support IE 10 as well, then you'll need to fall back to setting `width` or `height` (depending on the container's `flex-direction` property). You can do this by setting a `flex-basis` value of `auto`, which will instruct the browser to use the element's [main size](http://dev.w3.org/csswg/css-flexbox/#box-model) property (i.e., its `width` or `height`). Demo [8.2.b](http://codepen.io/philipwalton/pen/pvXGmW) offers an example of this.
 
 ### 9. Some HTML elements can't be flex containers
+
+//優先
 
 <table>
   <tr>
@@ -353,6 +371,8 @@ This bug only affects nested containers set to `display: flex`. If you set the n
 
 ### 11. Min and max size declarations are ignored when wrapping flex items
 
+//優先
+
 <table>
   <tr>
     <th align="left">デモ</th>
@@ -383,6 +403,8 @@ The only way to avoid this issue is to make sure to set the flex basis to a valu
 
 ### 12. Inline elements are not treated as flex-items
 
+//優先
+
 <table>
   <tr>
     <th align="left">デモ</th>
@@ -404,6 +426,8 @@ Inline elements, including `::before` and `::after` pseudo-elements, are not tre
 This issue can be avoided by adding a non-inline display value to the items, e.g. `block`, `inline-block`, `flex`, etc. Demo [12.1.b](http://codepen.io/philipwalton/pen/NqLoNp) shows an example of this working in IE 10-11.
 
 ### 13. Importance is ignored on flex-basis when using flex shorthand
+
+//あとで（IE10のみ）
 
 <table>
   <tr>
