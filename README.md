@@ -20,6 +20,7 @@ As the spec continues to evolve and vendors nail down their implementations, thi
 11. [flexアイテムを折り返す場合に、最小・最大サイズの定義が無視される](#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items)
 12. [インライン要素がflexアイテムとして扱われない](#12-inline-elements-are-not-treated-as-flex-items)
 13. [省略記法のflexを使った時、flex-basisでimportant指定が無視される](#13-importance-is-ignored-on-flex-basis-when-using-flex-shorthand)
+14. [Flex containers with wrapping the container is not sized to contain its items](#14-flex-containers-with-wrapping-the-container-is-not-sized-to-contain-its-items)
 
 ### 1. Minimum content sizing of flex items not honored
 
@@ -129,8 +130,8 @@ For cases where `min-height` is required, the workaround is to add a wrapper ele
   </tr>
   <tr valign="top">
     <td>
-      <a href="http://codepen.io/philipwalton/pen/OPbQgO">3.1.a</a> &mdash; <em>bug</em><br>
-      <a href="http://codepen.io/philipwalton/pen/ByQYZJ">3.1.b</a> &mdash; <em>workaround</em>
+      <a href="http://codepen.io/philipwalton/pen/OPbQgO">4.1.a</a> &mdash; <em>bug</em><br>
+      <a href="http://codepen.io/philipwalton/pen/ByQYZJ">4.1.b</a> &mdash; <em>workaround</em>
     </td>
     <td>Internet Explorer 10-11 (fixed in Edge)</td>
   </tr>
@@ -317,16 +318,17 @@ If you need to support IE 10 as well, then you'll need to fall back to setting `
       <a href="http://codepen.io/philipwalton/pen/EVaRaX">9.2.b</a> &mdash; <em>workaround</em>
     </td>
     <td>
-      Chrome<br>
+      Chrome (fixed in 54)<br>
       Edge<br>
       Firefox<br>
       Opera<br>
       Safari
     </td>
     <td>
-      <a href="https://code.google.com/p/chromium/issues/detail?id=262679">Chrome #262679</a><br>
-      <a href="https://connect.microsoft.com/IE/feedback/details/1753499/edge-fieldset-element-doesnt-work-properly-as-a-flex-container-display-flex">Edge #1753499</a><br>
+      <a href="https://code.google.com/p/chromium/issues/detail?id=262679">Chrome #262679 (fixed)</a><br>
+      <a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4511145/">Edge #4511145</a><br>
       <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=984869">Firefox #984869</a><br>
+      <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1230207">Firefox #1230207 (fixed)</a><br>
       <a href="https://bugs.webkit.org/show_bug.cgi?id=148826">Safari #148826</a>
     </td>
   </tr>
@@ -449,10 +451,54 @@ When applying `!important` to a `flex` shorthand declaration, IE 10 applies `!im
 
 If you need the `flex-basis` part of your `flex` declaration to be `!important` and you have to support IE 10, make sure to include a `flex-basis` declaration separately. Demo [13.1.b](http://codepen.io/philipwalton/pen/rOKvNb) shows an example of this working in IE 10.
 
+
+### 14. Flex containers with wrapping the container is not sized to contain its items
+
+<table>
+  <tr>
+    <th align="left">Demos</th>
+    <th align="left">Browsers affected</th>
+    <th align="left">Tracking Bugs</th>
+  </tr>
+  <tr valign="top">
+    <td>
+      <a href="http://codepen.io/gregwhitworth/pen/LNvpea">14.1</a> &mdash; <em>bug</em><br>
+    </td>
+    <td>
+        Chrome<br>
+        Firefox<br>
+        Safari<br>
+        Opera<br>
+    </td>
+    <td>
+        <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=507397">Chrome #507397</a><br>
+        <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=995020">Firefox #995020</a><br>
+        <a href="https://bugs.webkit.org/show_bug.cgi?id=157648">Safari #157648</a>
+    </td>
+  </tr>
+</table>
+
+When you make a flex container a float or to be absolutely positioned the
+dimensions of the container are determined by its contents if they are not
+explicitly set (aka: shink-to-fit). To determine these dimensions accurately
+you need to know the dimensions from layout which the heuristics they're
+using to bypass this layout pass produces the incorrect result, thus the container
+cannot encompass its items correctly.
+
+#### Workaround
+
+In order to workaround this you need to provide the explicit number of rows and columns
+for the flex container to allow the container to size around them. Unfortionately, this
+results in removing the responsiveness. Here is the same example [using the workaround](http://codepen.io/gregwhitworth/pen/yOrYEp).
+
 ## Acknowledgments
 
 Flexbugs was created as a follow-up to the article [Normalizing Cross-Browser Flexbox Bugs](http://philipwalton.com/articles/normalizing-cross-browser-flexbox-bugs/). It's maintained by [@philwalton](https://twitter.com/philwalton) and [@gregwhitworth](https://twitter.com/gregwhitworth). If you have any questions or would like to get involved, please feel free to reach out to either of us on Twitter.
 
 ## Contributing
 
-If you've discovered a flexbox bug or would like to submit a workaround, please open an issue or submit a pull request. Make sure to submit relevant test cases or screenshots and indicate which browsers are affected.
+If you've discovered a flexbox bug and would like to submit a workaround for it, please open an issue or submit a pull request. Make sure to submit relevant test cases or screenshots and indicate which browsers are affected.
+
+Please only submit bugs if they have a viable workaround and the workaround applies to most use cases. If you do not know of a workaround, but you're reasonably confident one exists, please indicate that in the issue and the community can help investigate.
+
+**Note: Do not submit bugs here in lieu of reporting them to browser vendors. [Reporting bugs to browser vendors](https://www.smashingmagazine.com/2011/09/help-the-community-report-browser-bugs/) is the best and fastest way to get bugs fixed.**
